@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: master
+  name: github
+  repo: louMoxy/gallery-site-cms.git
 
 media_folder: static/img
 public_folder: /img
