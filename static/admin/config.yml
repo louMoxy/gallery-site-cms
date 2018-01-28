@@ -52,15 +52,6 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "portfolio-page"}
           - {label: "Path", name: "path", widget: "hidden", default: "/portfolio"}
-          - {label: Gallery, name: "gallery", widget: object, fields: [{label: Image, name: image, widget: image}, {label: Tags, name: tags, widget: string, required: false}, {label: "Size", name: "imgSize", widget: "select",  options: ["regular", "horizontal", "vertical", "big"], default: "regular"}]}
-          - {label: "Page Style", name: "pageStyle", widget: "select", options: ["Full Width", "Narrow", default: "Narrow"]}
-          - {label: "Gallery Style", name: "galleryStyle", widget: "select", options: ["Auto fit", "Four columns", "Three columns", "Two columns", default: "Auto fit"]}
-      - file: "src/pages/gallery/gallery.md"
-        label: "Gallery"
-        name: "gallery page"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "gallery-page"}
-          - {label: "Path", name: "path", widget: "hidden", default: "/gallery"}
-          - {label: "Large Image", name: "image", widget: "image", required: false}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: images, name: "image", widget: list, fields: [{label: Image, name: image, widget: image}, {label: Tags, name: tags, widget: string, required: false}, {label: "Size", name: "imgSize", widget: "select",  options: ["regular", "horizontal", "vertical", "big"], default: "regular"}]}
+          - {label: "Page Style", name: "pageStyle", widget: "select", options: ["Full Width", "Narrow"],  default: "Narrow"}
+          - {label: "Gallery Style", name: "galleryStyle", widget: "select", options: ["Auto fit", "Four columns", "Three columns", "Two columns"], default: "Auto fit"}

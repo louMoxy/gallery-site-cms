@@ -18,13 +18,6 @@ const AboutPagePreview = ({ entry, widgetFor, getAsset}) =>
   image = {getAsset(entry.getIn(['data','image']))}
   />;
 
-const GalleryPagePreview = ({ entry, widgetFor, getAsset}) =>
-  <GalleryPageTemplate
-  title={entry.getIn(['data', 'title'])}
-  content={widgetFor('body')}
-  image = {getAsset(entry.getIn(['data','image']))}
-  />;
-
 const BlogPostPreview = ({ entry, widgetFor }) => (
   <BlogPostTemplate
     content={widgetFor('body')}
@@ -33,16 +26,15 @@ const BlogPostPreview = ({ entry, widgetFor }) => (
   />
 )
 
-const PortfolioPagePreview = ({entry, widgetFor, getAsset}) => (
-  <PortfolioPageTemplate
-    images={{
-      image: getAsset(entry.getIn(['data', 'gallery', 'image'])),
-      imgSize: entry.getIn(['data', 'gallery', 'imgSize']),
-    }}
+const PortfolioPagePreview = ({entry, widgetFor, getAsset}) => {
+  const entryImages = entry.getIn(['data', 'images'])
+  const images = entryImages ? entryImages.toJS() : []
+  return (<PortfolioPageTemplate
+    images={images}
     pageStyle={entry.getIn(['data', 'pageStyle'])}
     galleryStyle={entry.getIn(['data', 'galleryStyle'])}
-  />
-  )
+  />);
+  }
 
 const ProductPagePreview = ({ entry, widgetFor, getAsset }) => {
   const entryBlurbs = entry.getIn(['data', 'intro', 'blurbs'])
@@ -91,4 +83,3 @@ CMS.registerPreviewTemplate('about', AboutPagePreview)
 CMS.registerPreviewTemplate('products', ProductPagePreview)
 CMS.registerPreviewTemplate('blog', BlogPostPreview)
 CMS.registerPreviewTemplate('portfolio', PortfolioPagePreview)
-CMS.registerPreviewTemplate('gallery', GalleryPagePreview)

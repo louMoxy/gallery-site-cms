@@ -25,7 +25,7 @@ export const PortfolioPageTemplate = ({ images, pageStyle, galleryStyle}) => {
 export default ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return <PortfolioPageTemplate
-    images={frontmatter.gallery}
+    images={frontmatter.images}
     pageStyle={frontmatter.pageStyle}
     galleryStyle={frontmatter.galleryStyle}
   />;
@@ -37,7 +37,7 @@ export const portfolioQuery = graphql`
       frontmatter {
         pageStyle
         galleryStyle
-        gallery{
+        images{
           image
           imgSize
         }

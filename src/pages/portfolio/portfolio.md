@@ -3,7 +3,7 @@ templateKey: 'portfolio-page'
 path: /portfolio
 galleryStyle: "Auto fit"
 pageStyle: "Narrow"
-gallery:
+images:
   - image: /img/coffee.png
     title: 'Coffee'
     imgSize: regular
