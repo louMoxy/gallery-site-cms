@@ -1,6 +1,7 @@
 ---
-templateKey: 'about-page'
+templateKey: about-page
 path: /about
+image: /img/chemex.jpg
 title: About our values
 ---
 ### Shade-grown coffee
