@@ -1,7 +1,7 @@
 import React from 'react';
 import Content, { HTMLContent } from '../components/Content';
 
-export const AboutPageTemplate = ({ title, content, contentComponent, image }) => {
+export const GalleryPageTemplate = ({ title, content, contentComponent, image }) => {
   const PageContent = contentComponent || Content;
   return <section className="section section--gradient">
     <div className="container">
@@ -20,7 +20,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent, image }) =
 
 export default ({ data }) => {
   const { markdownRemark: post } = data;
-  return <AboutPageTemplate
+  return <GalleryPageTemplate
     contentComponent={HTMLContent}
     title={post.frontmatter.title}
     content={post.html}
@@ -28,8 +28,8 @@ export default ({ data }) => {
   />;
 };
 
-export const aboutPageQuery = graphql`
-  query AboutPage($path: String!) {
+export const galleryPageQuery = graphql`
+  query GalleryPage($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {

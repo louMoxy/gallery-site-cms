@@ -4,13 +4,26 @@ import CMS from 'netlify-cms'
 import Features from 'site/components/Features'
 import Testimonials from 'site/components/Testimonials'
 import Pricing from 'site/components/Pricing'
+import ImageCard from 'site/components/ImageCard';
 
 import { AboutPageTemplate } from 'site/templates/about-page';
 import { ProductPageTemplate } from 'site/templates/product-page';
 import { BlogPostTemplate } from 'site/templates/blog-post';
+import { PortfolioPageTemplate } from 'site/templates/portfolio-page';
 
-const AboutPagePreview = ({ entry, widgetFor }) =>
-  <AboutPageTemplate title={entry.getIn(['data', 'title'])} content={widgetFor('body')} />;
+const AboutPagePreview = ({ entry, widgetFor, getAsset}) =>
+  <AboutPageTemplate
+  title={entry.getIn(['data', 'title'])}
+  content={widgetFor('body')}
+  image = {getAsset(entry.getIn(['data','image']))}
+  />;
+
+const GalleryPagePreview = ({ entry, widgetFor, getAsset}) =>
+  <GalleryPageTemplate
+  title={entry.getIn(['data', 'title'])}
+  content={widgetFor('body')}
+  image = {getAsset(entry.getIn(['data','image']))}
+  />;
 
 const BlogPostPreview = ({ entry, widgetFor }) => (
   <BlogPostTemplate
@@ -19,6 +32,17 @@ const BlogPostPreview = ({ entry, widgetFor }) => (
     title={entry.getIn(['data', 'title'])}
   />
 )
+
+const PortfolioPagePreview = ({entry, widgetFor, getAsset}) => (
+  <PortfolioPageTemplate
+    images={{
+      image: getAsset(entry.getIn(['data', 'gallery', 'image'])),
+      imgSize: entry.getIn(['data', 'gallery', 'imgSize']),
+    }}
+    pageStyle={entry.getIn(['data', 'pageStyle'])}
+    galleryStyle={entry.getIn(['data', 'galleryStyle'])}
+  />
+  )
 
 const ProductPagePreview = ({ entry, widgetFor, getAsset }) => {
   const entryBlurbs = entry.getIn(['data', 'intro', 'blurbs'])
@@ -66,3 +90,5 @@ CMS.registerPreviewStyle('/styles.css')
 CMS.registerPreviewTemplate('about', AboutPagePreview)
 CMS.registerPreviewTemplate('products', ProductPagePreview)
 CMS.registerPreviewTemplate('blog', BlogPostPreview)
+CMS.registerPreviewTemplate('portfolio', PortfolioPagePreview)
+CMS.registerPreviewTemplate('gallery', GalleryPagePreview)

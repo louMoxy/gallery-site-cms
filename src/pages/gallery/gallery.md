@@ -1,6 +1,6 @@
 ---
-templateKey: 'about-page'
-path: /about
+templateKey: 'gallery-page'
+path: /gallery
 title: About our values
 image: /img/coffee.png
 ---
